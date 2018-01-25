@@ -1,0 +1,25 @@
+[
+  {
+    "id": "topic",
+    "label": "Topic",
+    "type": "text",
+    "placeholder": "enter topic..."
+  },
+  {
+    "id": "startYear",
+    "label": "Start Year",
+    "type": "number",
+    "placeholder": "enter year..."
+  },
+  {
+    "id": "endYear",
+    "label": "End Year",
+    "type": "number",
+    "placeholder": "enter year..."
+  },
+  {
+    "id": "submitButton",
+    "type": "submit",
+    "btnText": "Submit"
+  }
+]
