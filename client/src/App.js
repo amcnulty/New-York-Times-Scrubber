@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Home, Search } from './Routes';
 import Header from './Header';
-import SearchPanel from './SearchPanel';
 
 class App extends Component {
   render() {
     return (
-      <div className="App container-fluid">
-        <div className="row">
+      <BrowserRouter>
+        <div>
           <Header/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/search" component={Search}/>
+          </Switch>
         </div>
-        <div className="row">
-          <SearchPanel/>
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }

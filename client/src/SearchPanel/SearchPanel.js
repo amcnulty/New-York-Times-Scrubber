@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchForm from '../SearchForm';
-import searchFormInputs from './searchFormInputs';
+import TextInput from '../TextInput';
+import ButtonInput from '../ButtonInput';
 
 class SearchPanel extends Component {
   constructor(props) {
@@ -11,6 +12,15 @@ class SearchPanel extends Component {
 
   }
 
+  handleSubmit(formValue) {
+    console.log(formValue);
+  }
+
+  clearForm = (e) => {
+    e.preventDefault();
+    document.getElementById('searchForm').reset();
+  }
+
   render() {
     return (
       <div className="container">
@@ -19,7 +29,38 @@ class SearchPanel extends Component {
             Search
           </div>
           <div className="panel-body">
-            <SearchForm inputs={searchFormInputs}/>
+            <SearchForm
+              id="searchForm"
+              onSubmit={this.handleSubmit.bind(this)}
+            >
+              <TextInput 
+                id="topic" 
+                label="Topic" 
+                type="text" 
+                placeholder="enter topic"
+              />
+              <TextInput
+                id="startYear"
+                label="Start Year"
+                type="number"
+                placeholder="enter year..."
+              />
+              <TextInput
+                id="endYear"
+                label="End Year"
+                type="number"
+                placeholder="enter year..."
+              />
+              <ButtonInput
+                id="submitButton"
+                type="submit"
+              >
+                Submit
+              </ButtonInput>
+              <a href="" onClick={(e) => this.clearForm(e)}>
+                Clear
+              </a>
+            </SearchForm>
           </div>
         </div>
       </div>

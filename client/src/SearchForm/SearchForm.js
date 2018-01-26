@@ -4,18 +4,9 @@ import Input from '../Input/Input';
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-    this.initState(props.inputs);
   }
 
-  state = {
-  }
-
-  initState = inputs => {
-    inputs.map(input => {
-      this.state[input.id] = ''
-    });
-    console.log(this.state);
-  }
+  state = {}
   
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -24,16 +15,33 @@ class SearchForm extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    return this.props.onSubmit(this.state);
+  }
+
+  resetForm = () => {
+    this.state = {};
+    this.render();
+  }
+
   render() {
+    const {children} = this.props;
+
+    var childrenWithProps = React.Children.map(children, child => {
+      return React.cloneElement(child, { 
+        onChange: this.handleInputChange,
+        value: this.state[child.props.id] || ''
+      });
+    })
+
     return (
-      <form>
-        {this.props.inputs.map(options => 
-          <Input
-            options={options}
-            value={this.state[options.id]}
-            onChange={this.handleInputChange}
-          />
-        )}
+      <form
+        id={this.props.id}
+        onSubmit={this.handleSubmit}
+        onReset={this.resetForm}
+      >
+        {childrenWithProps}
       </form>
     );
   }

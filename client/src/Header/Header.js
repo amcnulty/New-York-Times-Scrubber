@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -7,10 +8,6 @@ class Header extends Component {
 
   state = {
     
-  }
-
-  componentWillMount() {
-    document.title = `NYT Article Scrubber | ${this.props.pageTitle}`
   }
 
   render() {
@@ -23,4 +20,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
