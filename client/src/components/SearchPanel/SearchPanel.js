@@ -23,49 +23,47 @@ class SearchPanel extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="panel panel-default text-center">
-          <div className="panel-heading">
-            Search
-          </div>
-          <div className="panel-body">
-            <SearchForm
-              id="searchForm"
-              onSubmit={this.handleSubmit.bind(this)}
+      <div className="panel panel-primary text-center">
+        <div className="panel-heading">
+          Search
+        </div>
+        <div className="panel-body">
+          <SearchForm
+            id="searchForm"
+            onSubmit={this.handleSubmit.bind(this)}
+          >
+            <TextInput 
+              id="topic" 
+              label="Topic" 
+              type="text" 
+              placeholder="enter topic"
+            />
+            <TextInput
+              id="startYear"
+              label="Start Year"
+              type="number"
+              placeholder="enter year..."
+            />
+            <TextInput
+              id="endYear"
+              label="End Year"
+              type="number"
+              placeholder="enter year..."
+            />
+            <ButtonInput
+              id="submitButton"
+              type="submit"
             >
-              <TextInput 
-                id="topic" 
-                label="Topic" 
-                type="text" 
-                placeholder="enter topic"
-              />
-              <TextInput
-                id="startYear"
-                label="Start Year"
-                type="number"
-                placeholder="enter year..."
-              />
-              <TextInput
-                id="endYear"
-                label="End Year"
-                type="number"
-                placeholder="enter year..."
-              />
-              <ButtonInput
-                id="submitButton"
-                type="submit"
-              >
-                Submit
-              </ButtonInput>
-              <a 
-                href="" 
-                style={{marginLeft: '10px'}}
-                onClick={(e) => this.clearForm(e)}
-              >
-                Clear
-              </a>
-            </SearchForm>
-          </div>
+              Submit
+            </ButtonInput>
+            <a 
+              href="" 
+              style={{marginLeft: '10px'}}
+              onClick={(e) => this.clearForm(e)}
+            >
+              Clear
+            </a>
+          </SearchForm>
         </div>
       </div>
     );

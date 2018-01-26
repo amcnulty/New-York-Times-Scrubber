@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var API = require('./API/API');
 
 var app = express();
 
@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use(express.static("client/build"));
 
 // API routes go here
+app.use('/api',API);
 
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
