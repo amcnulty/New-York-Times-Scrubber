@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import SearchPanel from '../../SearchPanel';
+import Header from '../../components/Header';
+import SearchPanel from '../../components/SearchPanel';
 import { titleUtil } from '../../utils';
 
 class Home extends Component {
@@ -14,6 +15,7 @@ class Home extends Component {
   render() {
     return (
       <div className="App container-fluid">
+        <Header/>
         <div className="row">
           <SearchPanel/>
         </div>

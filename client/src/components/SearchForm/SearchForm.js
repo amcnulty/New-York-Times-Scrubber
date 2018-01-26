@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from '../Input/Input';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -21,8 +20,12 @@ class SearchForm extends Component {
   }
 
   resetForm = () => {
-    this.state = {};
-    this.render();
+    let keys = Object.keys(this.state);
+    keys.map(key => {
+      this.setState({
+        [key]: ''
+      });
+    });
   }
 
   render() {

@@ -57,7 +57,11 @@ class SearchPanel extends Component {
               >
                 Submit
               </ButtonInput>
-              <a href="" onClick={(e) => this.clearForm(e)}>
+              <a 
+                href="" 
+                style={{marginLeft: '10px'}}
+                onClick={(e) => this.clearForm(e)}
+              >
                 Clear
               </a>
             </SearchForm>

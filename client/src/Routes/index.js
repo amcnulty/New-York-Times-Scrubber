@@ -1,4 +1,4 @@
 import Home from './Home';
-import Search from './Search';
+import Saved from './Saved';
 
-export { Home, Search };
+export { Home, Saved };
