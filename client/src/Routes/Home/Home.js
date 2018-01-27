@@ -19,16 +19,15 @@ class Home extends Component {
 
   componentWillMount = () => {
     titleUtil.set('Home');
-    this.setState({
-      articles: testData
-    });
-    // ajaxUtil.getArticles((err, articles) => {
-    //   if (err) throw err;
-    //   console.log(this);
-    //   this.setState({
-    //     articles: articles
-    //   });
+    // this.setState({
+    //   articles: testData
     // });
+    ajaxUtil.getNYTArticles((err, articles) => {
+      if (err) throw err;
+      this.setState({
+        articles: articles
+      });
+    });
   }
   
   updateArticleState = articles => {
@@ -48,7 +47,10 @@ class Home extends Component {
   render() {
     return (
       <div className="App container-fluid">
-        <Header/>
+        <Header
+          heading="New York Times Article Scrubber"
+          caption="Search for and save articles of interest!"
+        />
         <div className="container">
           <div className="row">
             <SearchPanel/>

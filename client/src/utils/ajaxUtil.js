@@ -1,9 +1,21 @@
 import axios from 'axios';
 
-const getArticles = cb => {
-  axios.get('./api/articles')
+const getNYTArticles = cb => {
+  axios.get('./api/NYTarticles')
   .then(function(response) {
     cb(null, response.data.response.docs);
+  })
+  .catch(function(error) {
+    if (error) {
+      cb(error);
+    }
+  });
+}
+
+const getDBArticles = cb => {
+  axios.get('./api/articles')
+  .then(function(response) {
+    cb(null, response.data);
   })
   .catch(function(error) {
     if (error) {
@@ -24,4 +36,19 @@ const saveArticle = (article, cb) => {
   })
 }
 
-export default {getArticles, saveArticle};
+const deleteArticle = (articleId, cb) => {
+  axios.delete('./api/article', {params: {articleId: articleId}})
+  .then(function(response) {
+    cb(null);
+  })
+  .catch(function(error) {
+    if (error) cb(error);
+  });
+}
+
+export default {
+  getNYTArticles, 
+  saveArticle, 
+  getDBArticles,
+  deleteArticle
+};

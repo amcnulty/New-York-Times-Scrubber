@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
-var request = require('request');
+const express = require('express');
+const router = express.Router();
+const request = require('request');
+const articleHelper = require('../util/articleHelper');
 
-/* GET home page. */
 router.get('/articles', function(req, res, next) {
+  articleHelper.getArticles(function(err, articles) {
+    if (err) {
+      throw err;
+      res.status(500).end();
+    }
+    res.status(200).send(articles).end();
+  })
+});
+
+router.get('/NYTarticles', function(req, res, next) {
   request.get({
     url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
     qs: {
@@ -25,12 +35,24 @@ router.get('/articles', function(req, res, next) {
 });
 
 router.post('/article', function(req, res, next) {
-  console.log(req.body);
-  res.status(200).end();
+  articleHelper.saveArticle(req.body, function(err, savedArticle) {
+    if (err) {
+      throw err;
+      return res.status(500).end();
+    }
+    else if (!savedArticle) return res.status(202).end();
+    res.status(200).end();
+  });
 });
 
 router.delete('/article', function(req, res, next) {
-  res.send('Deleting Articles');
+  articleHelper.deleteArticle(req.query.articleId, function(err) {
+    if (err) {
+      throw err;
+      return res.status(500).end();
+    }
+    res.status(200).end();
+  });
 });
 
 module.exports = router;

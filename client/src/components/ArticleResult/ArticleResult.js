@@ -1,11 +1,6 @@
 import React from 'react';
 import articleResult from './articleResult.css';
 
-const handleClick = (e, data) => {
-  e.preventDefault();
-  console.log(data);
-}
-
 const ArticleResult = props => {
   return (
     <div className="row">
