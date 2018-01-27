@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const getNYTArticles = cb => {
-  axios.get('./api/NYTarticles')
+const getNYTArticles = (query, cb) => {
+  axios.get('./api/NYTarticles', {params: query})
   .then(function(response) {
     cb(null, response.data.response.docs);
   })

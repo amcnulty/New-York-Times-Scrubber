@@ -12,9 +12,9 @@ class SearchPanel extends Component {
 
   }
 
-  handleSubmit(formValue) {
-    console.log(formValue);
-  }
+  // handleSubmit(formValue) {
+  //   console.log(formValue);
+  // }
 
   clearForm = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ class SearchPanel extends Component {
         <div className="panel-body">
           <SearchForm
             id="searchForm"
-            onSubmit={this.handleSubmit.bind(this)}
+            onSubmit={this.props.searchData}
           >
             <TextInput 
               id="topic" 
@@ -42,13 +42,13 @@ class SearchPanel extends Component {
               id="startYear"
               label="Start Year"
               type="number"
-              placeholder="enter year..."
+              placeholder="YYYYMMDD"
             />
             <TextInput
               id="endYear"
               label="End Year"
               type="number"
-              placeholder="enter year..."
+              placeholder="YYYYMMDD"
             />
             <ButtonInput
               id="submitButton"

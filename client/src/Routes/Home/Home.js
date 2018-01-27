@@ -22,10 +22,25 @@ class Home extends Component {
     // this.setState({
     //   articles: testData
     // });
-    ajaxUtil.getNYTArticles((err, articles) => {
+    // ajaxUtil.getNYTArticles((err, articles) => {
+    //   if (err) throw err;
+    //   this.setState({
+    //     articles: articles
+    //   });
+    // });
+  }
+
+  searchForArticles = formData => {
+    console.log(formData);
+    ajaxUtil.getNYTArticles({
+      q: formData.topic,
+      begin_date: formData.startYear,
+      end_date: formData.endYear
+    },
+    (err, articles) => {
       if (err) throw err;
       this.setState({
-        articles: articles
+        ['articles']: articles
       });
     });
   }
@@ -53,7 +68,7 @@ class Home extends Component {
         />
         <div className="container">
           <div className="row">
-            <SearchPanel/>
+            <SearchPanel searchData={this.searchForArticles}/>
           </div>
           {this.state.articles.map(article => {
             return <ArticleResult data={article} onClick={this.saveArticle}/>;

@@ -14,13 +14,14 @@ router.get('/articles', function(req, res, next) {
 });
 
 router.get('/NYTarticles', function(req, res, next) {
+  let {q, begin_date, end_date} = req.query;
   request.get({
     url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
     qs: {
-      'api-key': "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
-      'q': "elon musk spacex tesla",
-      'begin_date': "20170101",
-      'end_date': "20180101",
+      'api-key': process.env.NYT_API_KEY,
+      'q': q,
+      'begin_date': begin_date,
+      'end_date': end_date,
       'sort': "newest",
       'fl': "web_url, snippet, headline, pub_date"
     },
