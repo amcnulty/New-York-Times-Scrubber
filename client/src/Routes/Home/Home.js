@@ -19,19 +19,9 @@ class Home extends Component {
 
   componentWillMount = () => {
     titleUtil.set('Home');
-    // this.setState({
-    //   articles: testData
-    // });
-    // ajaxUtil.getNYTArticles((err, articles) => {
-    //   if (err) throw err;
-    //   this.setState({
-    //     articles: articles
-    //   });
-    // });
   }
 
   searchForArticles = formData => {
-    console.log(formData);
     ajaxUtil.getNYTArticles({
       q: formData.topic,
       begin_date: formData.startYear,
@@ -55,7 +45,6 @@ class Home extends Component {
     e.preventDefault();
     ajaxUtil.saveArticle(data, err => {
       if (err) throw err;
-      console.log("ARTICLE SAVED");
     });
   }
 

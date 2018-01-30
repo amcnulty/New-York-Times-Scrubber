@@ -31,7 +31,6 @@ class Saved extends Component {
 
   removeArticle = (e, articleId) => {
     e.preventDefault();
-    // TODO use ajaxUtil to delete article
     ajaxUtil.deleteArticle(articleId, err => {
       if (err) throw err;
       this.getArticles();

@@ -3,7 +3,7 @@ import axios from 'axios';
 const getNYTArticles = (query, cb) => {
   axios.get('./api/NYTarticles', {params: query})
   .then(function(response) {
-    cb(null, response.data.response.docs);
+    cb(null, response.data.response.docs.reverse());
   })
   .catch(function(error) {
     if (error) {
@@ -15,7 +15,7 @@ const getNYTArticles = (query, cb) => {
 const getDBArticles = cb => {
   axios.get('./api/articles')
   .then(function(response) {
-    cb(null, response.data);
+    cb(null, response.data.reverse());
   })
   .catch(function(error) {
     if (error) {
